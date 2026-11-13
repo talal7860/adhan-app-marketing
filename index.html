@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adhan Times</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Adhan Times is a prayer times app for iPhone, iPad and Apple Watch with a live countdown to the next adhan, salah reminders, Home Screen widgets and accurate times wherever you travel.">
+<link rel="canonical" href="https://adhanapp.conelabs.org/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0E1430">
+<meta name="apple-itunes-app" content="app-id=6833678431">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Adhan Times">
+<meta property="og:title" content="Adhan Times: Prayer Times & Live Countdown">
+<meta property="og:description" content="A live countdown to every adhan, gentle salah reminders and beautiful widgets. For iPhone, iPad and Apple Watch.">
+<meta property="og:url" content="https://adhanapp.conelabs.org/">
+<meta property="og:image" content="https://adhanapp.conelabs.org/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Adhan Times app showing a countdown to Asr over a blue afternoon sky">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Adhan Times: Prayer Times & Live Countdown">
+<meta name="twitter:description" content="A live countdown to every adhan, gentle salah reminders and beautiful widgets.">
+<meta name="twitter:image" content="https://adhanapp.conelabs.org/img/og-image.jpg">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=Amiri:wght@400;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"MobileApplication","@id":"https://adhanapp.conelabs.org/#app","name":"Adhan Times","alternateName":"Adhan Times: Prayer Times & Live Countdown","operatingSystem":"iOS, iPadOS, watchOS","applicationCategory":"LifestyleApplication","description":"Prayer times app with a live countdown to the next adhan, salah reminders, Home Screen and Lock Screen widgets, an Apple Watch app and travel-aware prayer times.","url":"https://adhanapp.conelabs.org/","installUrl":"https://apps.apple.com/app/id6833678431","image":"https://adhanapp.conelabs.org/img/og-image.jpg","screenshot":["https://adhanapp.conelabs.org/img/today-dhuhr.webp","https://adhanapp.conelabs.org/img/widgets.webp","https://adhanapp.conelabs.org/img/week.webp"],"publisher":{"@id":"https://adhanapp.conelabs.org/#org"}},
+{"@type":"Organization","@id":"https://adhanapp.conelabs.org/#org","name":"Conelab IT Consultants Inc.","url":"https://adhanapp.conelabs.org/"},
+{"@type":"WebSite","@id":"https://adhanapp.conelabs.org/#site","url":"https://adhanapp.conelabs.org/","name":"Adhan Times","publisher":{"@id":"https://adhanapp.conelabs.org/#org"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How does Adhan Times calculate prayer times?","acceptedAnswer":{"@type":"Answer","text":"Prayer times are calculated on your device from your location using standard astronomical formulas. You can choose the calculation method, including University of Islamic Sciences Karachi, ISNA, Muslim World League, Egypt, Makkah and Tehran, and pick Standard or Hanafi for Asr."}},
+{"@type":"Question","name":"Do prayer times update when I travel?","acceptedAnswer":{"@type":"Answer","text":"Yes. When you open the app somewhere new, Adhan Times notices the change and offers to update your prayer times and reminders with one tap."}},
+{"@type":"Question","name":"Will I hear the adhan at each prayer time?","acceptedAnswer":{"@type":"Answer","text":"Adhan Times schedules an adhan notification for each prayer. You can turn reminders on or off for each prayer and add a heads-up reminder before it."}},
+{"@type":"Question","name":"Which devices does Adhan Times support?","acceptedAnswer":{"@type":"Answer","text":"Adhan Times runs on iPhone, iPhone Duo and iPad, with an Apple Watch app and complications, plus widgets for the Home Screen and Lock Screen."}},
+{"@type":"Question","name":"Do I need an account?","acceptedAnswer":{"@type":"Answer","text":"No. Adhan Times works without an account or sign-in."}}
+]}
+]}
+</script>
+<style>
+/* Layout: a full-bleed sky band that follows the visitor's time of day, then calm alternating rows of screens and copy on a cool paper ground. */
+:root{
+  --night:#0E1430; --dusk:#6E2A52; --sun:#FFD27A; --sun-soft:#FFE7A3;
+  --bg:#F3F5FA; --surface:#FFFFFF; --fg:#121726; --muted:#525A72; --line:#DFE4EF; --brand:#2453B3; --brand-ink:#FFFFFF;
+  --font-display:"Sora", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body:"Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+  --font-arabic:"Amiri", "Geeza Pro", "Noto Naskh Arabic", serif;
+  --sky-a:#281C4C; --sky-b:#6E2A52; --sky-c:#A8432C;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0A0E1C; --surface:#121933; --fg:#EEF1F8; --muted:#A6AEC6; --line:#232B47; --brand:#9DB8FF; --brand-ink:#0A0E1C; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#0A0E1C; --surface:#121933; --fg:#EEF1F8; --muted:#A6AEC6; --line:#232B47; --brand:#9DB8FF; --brand-ink:#0A0E1C; color-scheme:dark }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--font-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.02em;text-wrap:balance;margin:0}
+h2{font-size:clamp(30px,4vw,44px);line-height:1.1;font-weight:700}
+h3{font-size:21px;line-height:1.25;font-weight:600}
+p{margin:0}
+.eyebrow{font:600 13px/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.lede{font-size:19px;color:var(--muted);max-width:60ch}
+
+/* Sky band */
+.sky{position:relative;overflow:hidden;color:#fff;background:linear-gradient(180deg,var(--sky-a) 0%,var(--sky-b) 58%,var(--sky-c) 100%);transition:background .8s}
+.sky::after{content:"";position:absolute;inset:auto 0 0;height:120px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.12))}
+.arc{position:absolute;left:50%;bottom:-2px;width:min(1500px,170vw);transform:translateX(-50%);pointer-events:none}
+.nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:700 20px/1 var(--font-display);letter-spacing:-.01em}
+.brand img{width:40px;height:40px;border-radius:10px}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:28px;font-weight:500;font-size:15px}
+.nav ul a{text-decoration:none;opacity:.9}
+.nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
+.hero{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:end;padding-block:40px 0}
+.hero-copy{padding-bottom:110px;display:flex;flex-direction:column;gap:22px}
+.hero h1{font-size:clamp(44px,7vw,84px);line-height:.98;font-weight:700;letter-spacing:-.035em}
+.hero .lede{color:rgba(255,255,255,.88);font-size:20px}
+.hero .eyebrow{color:var(--sun-soft)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.store{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:10px 22px 10px 18px;border-radius:14px;background:#000;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.35)}
+.store svg{flex-shrink:0}
+.store small{display:block;font-size:11px;letter-spacing:.02em;opacity:.85;line-height:1.1}
+.store strong{display:block;font:600 20px/1.15 var(--font-display);letter-spacing:-.01em}
+.ghost{min-height:56px;display:inline-flex;align-items:center;padding:0 20px;border-radius:14px;color:#fff;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.4)}
+.ghost:hover{background:rgba(255,255,255,.1)}
+.hero-shot{justify-self:center;width:min(360px,100%);margin-bottom:-60px;filter:drop-shadow(0 40px 60px rgba(0,0,0,.4))}
+.platforms{font-size:14px;color:rgba(255,255,255,.8)}
+
+/* Prayer strip */
+.prayers{position:relative;z-index:3;margin-top:-1px;background:var(--surface);border-bottom:1px solid var(--line)}
+.prayers ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.prayers li{padding:26px 14px 24px;text-align:center;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.prayers li:first-child{border-left:0}
+.prayers .ar{font:700 26px/1.2 var(--font-arabic);color:var(--fg)}
+.prayers .en{font:600 15px/1.2 var(--font-display)}
+.prayers .when{font-size:13px;color:var(--muted)}
+
+/* Feature rows */
+section{padding-block:96px}
+.head{display:flex;flex-direction:column;gap:14px;max-width:720px;margin-bottom:56px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.row + .row{margin-top:96px}
+.row.flip .shot{order:2}
+.shot{display:flex;justify-content:center}
+.shot img{width:min(340px,100%);filter:drop-shadow(0 30px 50px rgba(14,20,48,.22))}
+.copy{display:flex;flex-direction:column;gap:18px;min-width:0}
+.copy p{color:var(--muted);max-width:52ch}
+.ticks{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ticks li{display:flex;gap:12px;align-items:flex-start}
+.ticks li::before{content:"";flex-shrink:0;width:10px;height:10px;margin-top:9px;border-radius:999px;background:var(--sun);box-shadow:0 0 0 4px color-mix(in srgb, var(--sun) 25%, transparent)}
+
+/* Sky follows the day */
+.day{background:var(--night);color:#fff}
+.day .lede{color:rgba(255,255,255,.8)}
+.day .eyebrow{color:var(--sun-soft)}
+.triptych{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:end}
+.triptych figure{margin:0;display:flex;flex-direction:column;gap:14px;align-items:center}
+.triptych img{width:min(300px,100%)}
+.triptych figcaption{font:600 15px/1.3 var(--font-display);text-align:center}
+.triptych figcaption span{display:block;font:400 13px/1.4 var(--font-body);color:rgba(255,255,255,.7)}
+
+/* Everywhere */
+.devices{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;align-items:center}
+.devices .ipad img{width:100%;filter:drop-shadow(0 30px 50px rgba(14,20,48,.22))}
+.watches{display:flex;gap:20px;justify-content:center}
+.watches img{width:min(170px,45%)}
+.device-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px}
+.device-notes div{display:flex;flex-direction:column;gap:8px;border-top:2px solid var(--line);padding-top:18px}
+.device-notes p{color:var(--muted);font-size:16px}
+
+/* FAQ */
+.faq{background:var(--surface);border-block:1px solid var(--line)}
+.faq-list{max-width:820px;display:flex;flex-direction:column}
+details{border-bottom:1px solid var(--line)}
+details:first-child{border-top:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font:600 19px/1.35 var(--font-display)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:400 28px/1 var(--font-body);color:var(--brand);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 22px;color:var(--muted);max-width:68ch}
+
+/* Final CTA */
+.final{text-align:left}
+.final .card{position:relative;overflow:hidden;border-radius:28px;padding:64px max(28px,5vw);color:#fff;background:linear-gradient(120deg,#060A1C 0%,#1B2650 40%,#3B3470 70%,#6E2A52 100%);display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
+.final h2{max-width:16ch}
+.final p{color:rgba(255,255,255,.82);margin-top:12px;max-width:44ch}
+footer{padding-block:40px 56px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
+footer nav{display:flex;gap:24px;flex-wrap:wrap}
+
+@media (max-width: 900px){
+  .nav ul{display:none}
+  .hero{grid-template-columns:1fr;gap:20px;padding-top:16px}
+  .hero-copy{padding-bottom:0}
+  .hero-shot{width:min(300px,82%);margin-bottom:-40px}
+  .prayers ol{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .prayers li:nth-child(4){border-left:0}
+  .prayers li:nth-child(n+4){border-top:1px solid var(--line)}
+  .row,.devices{grid-template-columns:1fr;gap:36px}
+  .row.flip .shot{order:0}
+  .triptych{grid-template-columns:1fr;gap:40px}
+  .device-notes{grid-template-columns:1fr}
+  section{padding-block:72px}
+  .row + .row{margin-top:72px}
+}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .sky{transition:none} }
+</style>
+</head>
+<body>
+
+<header class="sky" id="top">
+  <svg class="arc" viewBox="0 0 1500 520" fill="none" aria-hidden="true">
+    <path d="M60 510 A690 470 0 0 1 1440 510" stroke="rgba(255,255,255,.32)" stroke-width="2" stroke-dasharray="4 11"/>
+    <line x1="0" y1="510" x2="1500" y2="510" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+    <circle id="sun-glow" cx="390" cy="160" r="46" fill="rgba(255,231,163,.22)"/>
+    <circle id="sun" cx="390" cy="160" r="22" fill="#FFE7A3"/>
+  </svg>
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#top"><img src="img/apple-touch-icon.png" width="40" height="40" alt="">Adhan Times</a>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#widgets">Widgets</a></li>
+        <li><a href="#devices">Apple Watch &amp; iPad</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Prayer times · Adhan reminders</span>
+        <h1>Never miss a prayer.</h1>
+        <p class="lede">Adhan Times shows exactly how long until the next prayer, with a calm design whose sky follows your day from Fajr to Isha.</p>
+        <div class="cta-row">
+          <a class="store" href="https://apps.apple.com/app/id6833678431" rel="noopener">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
+            <span><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a class="ghost" href="#features">See how it works</a>
+        </div>
+        <p class="platforms">For iPhone, iPhone Duo, iPad and Apple Watch</p>
+      </div>
+      <img class="hero-shot" src="img/today-dhuhr.webp" width="780" height="1688" alt="Adhan Times Today screen counting down to Asr, with all six prayer times for the day" fetchpriority="high">
+    </div>
+  </div>
+</header>
+
+<div class="prayers" aria-label="The daily prayer times Adhan Times tracks">
+  <div class="wrap">
+    <ol>
+      <li><span class="ar" lang="ar">الفجر</span><span class="en">Fajr</span><span class="when">Dawn</span></li>
+      <li><span class="ar" lang="ar">الشروق</span><span class="en">Sunrise</span><span class="when">End of Fajr</span></li>
+      <li><span class="ar" lang="ar">الظهر</span><span class="en">Dhuhr</span><span class="when">Midday · Jumu’ah on Fridays</span></li>
+      <li><span class="ar" lang="ar">العصر</span><span class="en">Asr</span><span class="when">Afternoon</span></li>
+      <li><span class="ar" lang="ar">المغرب</span><span class="en">Maghrib</span><span class="when">Sunset</span></li>
+      <li><span class="ar" lang="ar">العشاء</span><span class="en">Isha</span><span class="when">Night</span></li>
+    </ol>
+  </div>
+</div>
+
+<main>
+  <section id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Features</span>
+        <h2 id="features-title">Built around the next prayer</h2>
+        <p class="lede">Everything in Adhan Times starts from one question: how long until the next adhan?</p>
+      </div>
+
+      <div class="row">
+        <div class="shot"><img src="img/today-isha.webp" width="780" height="1688" alt="Countdown to Fajr on a night sky, with today's prayer list below" loading="lazy"></div>
+        <div class="copy">
+          <h3>A live countdown to every adhan</h3>
+          <p>Open the app and the next prayer is the first thing you see, counting down to the second. Today’s six prayer times sit below, with the next one marked and passed ones softly dimmed.</p>
+          <ul class="ticks">
+            <li>Hijri date beside the Gregorian date</li>
+            <li>A bell on each prayer to turn its reminder on or off</li>
+            <li>An optional heads-up reminder before each prayer</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row flip">
+        <div class="shot"><img src="img/travel.webp" width="780" height="1688" alt="Prompt reading Looks like you're in Edmonton now, with buttons to update prayer times or keep Calgary" loading="lazy"></div>
+        <div class="copy">
+          <h3>Accurate wherever you travel</h3>
+          <p>Prayer times are calculated on your device for where you are. Arrive somewhere new and Adhan Times notices, then offers to update your times and reminders with one tap.</p>
+          <ul class="ticks">
+            <li>Works without an account or sign-in</li>
+            <li>Calculated on your device, so it works offline</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="shot"><img src="img/settings.webp" width="780" height="1688" alt="Settings screen with calculation method, Asr method, adhan sound and appearance options" loading="lazy"></div>
+        <div class="copy">
+          <h3>The method your community follows</h3>
+          <p>Choose from the major calculation methods, including University of Islamic Sciences Karachi, ISNA, Muslim World League, Egypt, Makkah and Tehran. Pick Standard or Hanafi for Asr, and the adhan sound you want to hear.</p>
+        </div>
+      </div>
+
+      <div class="row flip">
+        <div class="shot"><img src="img/week.webp" width="780" height="1688" alt="Weekly table of Fajr, Sunrise, Dhuhr, Asr, Maghrib and Isha times for seven days" loading="lazy"></div>
+        <div class="copy">
+          <h3>Plan the week ahead</h3>
+          <p>See every prayer time for the next seven days in one table, with Fridays marked for Jumu’ah and how much daylight you gain or lose each day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="day" aria-labelledby="day-title">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Design</span>
+        <h2 id="day-title">The sky follows your day</h2>
+        <p class="lede">The screen takes on the colour of the hour, from the violet before Fajr to the deep blue of Isha, so a glance tells you where you are in the day.</p>
+      </div>
+      <div class="triptych">
+        <figure><img src="img/today-fajr.webp" width="780" height="1688" alt="Adhan Times at dawn with a violet sky" loading="lazy"><figcaption>Before sunrise<span>Fajr time</span></figcaption></figure>
+        <figure><img src="img/today-dhuhr.webp" width="780" height="1688" alt="Adhan Times in the afternoon with a bright blue sky" loading="lazy"><figcaption>Afternoon<span>Counting down to Asr</span></figcaption></figure>
+        <figure><img src="img/today-isha.webp" width="780" height="1688" alt="Adhan Times at night with a dark sky and dark list" loading="lazy"><figcaption>Night<span>Dark mode, automatically</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="widgets" aria-labelledby="widgets-title">
+    <div class="wrap">
+      <div class="row">
+        <div class="copy">
+          <span class="eyebrow">Widgets</span>
+          <h2 id="widgets-title">The countdown, right on your Home Screen</h2>
+          <p>Small, medium and large widgets show the time left until the next prayer over the sun’s path across the day. The larger sizes list all six prayers. Lock Screen widgets and a Live Activity keep the next adhan in view without unlocking your phone.</p>
+        </div>
+        <div class="shot"><img src="img/widgets.webp" width="780" height="1688" alt="Adhan Times widgets in small, medium and large sizes on an iPhone Home Screen" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="devices" aria-labelledby="devices-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Every screen</span>
+        <h2 id="devices-title">On your wrist, your iPad and your iPhone Duo</h2>
+      </div>
+      <div class="devices">
+        <div class="ipad"><img src="img/ipad.webp" width="1791" height="1251" alt="Adhan Times on iPad with a large countdown inside the sun's path and the day's prayers below" loading="lazy"></div>
+        <div class="watches">
+          <img src="img/watch-home.webp" width="396" height="484" alt="Apple Watch app counting down to Asr" loading="lazy">
+          <img src="img/watch-face.webp" width="396" height="484" alt="Adhan Times complications on an Apple Watch face" loading="lazy">
+        </div>
+      </div>
+      <div class="device-notes">
+        <div><h3>Apple Watch</h3><p>A countdown, the full list of times and complications for your watch face.</p></div>
+        <div><h3>iPad</h3><p>A large countdown at the centre of the screen, with the day’s prayers below.</p></div>
+        <div><h3>iPhone Duo</h3><p>Fits the cover screen when folded and the full screen when open.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">FAQ</span>
+        <h2 id="faq-title">Questions</h2>
+      </div>
+      <div class="faq-list">
+        <details open><summary>How does Adhan Times calculate prayer times?</summary><p>Prayer times are calculated on your device from your location using standard astronomical formulas. You can choose the calculation method, including University of Islamic Sciences Karachi, ISNA, Muslim World League, Egypt, Makkah and Tehran, and pick Standard or Hanafi for Asr.</p></details>
+        <details><summary>Do prayer times update when I travel?</summary><p>Yes. When you open the app somewhere new, Adhan Times notices the change and offers to update your prayer times and reminders with one tap.</p></details>
+        <details><summary>Will I hear the adhan at each prayer time?</summary><p>Adhan Times schedules an adhan notification for each prayer. You can turn reminders on or off for each prayer and add a heads-up reminder before it.</p></details>
+        <details><summary>Which devices does Adhan Times support?</summary><p>Adhan Times runs on iPhone, iPhone Duo and iPad, with an Apple Watch app and complications, plus widgets for the Home Screen and Lock Screen.</p></details>
+        <details><summary>Do I need an account?</summary><p>No. Adhan Times works without an account or sign-in.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" aria-labelledby="final-title">
+    <div class="wrap">
+      <div class="card">
+        <div>
+          <h2 id="final-title">Know the time to the next prayer, always.</h2>
+          <p>Adhan Times for iPhone, iPad and Apple Watch.</p>
+        </div>
+        <a class="store" href="https://apps.apple.com/app/id6833678431" rel="noopener">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
+          <span><small>Download on the</small><strong>App Store</strong></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Conelab IT Consultants Inc.</span>
+    <nav aria-label="Footer">
+      <a href="https://apps.apple.com/app/id6833678431" rel="noopener">App Store</a>
+      <a href="https://github.com/talal7860/prayer-app/issues" rel="noopener">Support</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Tint the sky to the visitor's local hour and place the sun on its path.
+  var skies={fajr:['#161D45','#3B3470','#7A5683'],morning:['#1E4B86','#3E6CA6','#7A6E9C'],noon:['#164A8A','#2763A3','#3271B0'],asr:['#1C4872','#3A6584','#85602D'],maghrib:['#281C4C','#6E2A52','#A8432C'],isha:['#060A1C','#0F1836','#1B2650']};
+  var d=new Date(), h=d.getHours()+d.getMinutes()/60;
+  var k=h<5?'isha':h<6.5?'fajr':h<11?'morning':h<15?'noon':h<17?'asr':h<19?'maghrib':'isha';
+  var r=document.documentElement.style, s=skies[k];
+  r.setProperty('--sky-a',s[0]); r.setProperty('--sky-b',s[1]); r.setProperty('--sky-c',s[2]);
+  var t=Math.min(1,Math.max(0,(h-6)/13)), ph=Math.PI*(1-t);
+  var x=(750+690*Math.cos(ph)).toFixed(0), y=(510-470*Math.sin(ph)).toFixed(0);
+  var sun=document.getElementById('sun'), glow=document.getElementById('sun-glow');
+  if(h<6||h>19){ sun.setAttribute('opacity','0'); glow.setAttribute('opacity','0'); }
+  [sun,glow].forEach(function(c){ c.setAttribute('cx',x); c.setAttribute('cy',y); });
+})();
+</script>
+</body>
+</html>
