@@ -19,3 +19,9 @@
   for = "/site.webmanifest"
   [headers.values]
     Content-Type = "application/manifest+json"
+
+# The privacy policy lives at /privacy-policy (served from privacy-policy.html).
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy-policy"
+  status = 301
