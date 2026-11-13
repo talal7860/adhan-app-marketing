@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Adhan Times</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Adhan Times is a prayer times app for iPhone, iPad and Apple Watch with a live countdown to the next adhan, salah reminders, Home Screen widgets and accurate times wherever you travel.">
+<meta name="description" content="Adhan Times is a prayer times app for iPhone, iPad, Apple Watch and Android with a live countdown to the next adhan, salah reminders, Home Screen widgets and accurate times wherever you travel.">
 <link rel="canonical" href="https://adhanapp.conelabs.org/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0E1430">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Adhan Times">
 <meta property="og:title" content="Adhan Times: Prayer Times & Live Countdown">
-<meta property="og:description" content="A live countdown to every adhan, gentle salah reminders and beautiful widgets. For iPhone, iPad and Apple Watch.">
+<meta property="og:description" content="A live countdown to every adhan, gentle salah reminders and beautiful widgets. For iPhone, iPad, Apple Watch and Android.">
 <meta property="og:url" content="https://adhanapp.conelabs.org/">
 <meta property="og:image" content="https://adhanapp.conelabs.org/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -32,14 +32,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=Amiri:wght@400;700&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"MobileApplication","@id":"https://adhanapp.conelabs.org/#app","name":"Adhan Times","alternateName":"Adhan Times: Prayer Times & Live Countdown","operatingSystem":"iOS, iPadOS, watchOS","applicationCategory":"LifestyleApplication","description":"Prayer times app with a live countdown to the next adhan, salah reminders, Home Screen and Lock Screen widgets, an Apple Watch app and travel-aware prayer times.","url":"https://adhanapp.conelabs.org/","installUrl":"https://apps.apple.com/app/id6833678431","image":"https://adhanapp.conelabs.org/img/og-image.jpg","screenshot":["https://adhanapp.conelabs.org/img/today-dhuhr.webp","https://adhanapp.conelabs.org/img/widgets.webp","https://adhanapp.conelabs.org/img/week.webp"],"publisher":{"@id":"https://adhanapp.conelabs.org/#org"}},
-{"@type":"Organization","@id":"https://adhanapp.conelabs.org/#org","name":"Conelab IT Consultants Inc.","url":"https://adhanapp.conelabs.org/"},
+{"@type":"MobileApplication","@id":"https://adhanapp.conelabs.org/#app","name":"Adhan Times","alternateName":"Adhan Times: Prayer Times & Live Countdown","operatingSystem":"iOS, iPadOS, watchOS, Android","applicationCategory":"LifestyleApplication","description":"Prayer times app with a live countdown to the next adhan, salah reminders, Home Screen and Lock Screen widgets, an Apple Watch app and travel-aware prayer times.","url":"https://adhanapp.conelabs.org/","installUrl":["https://apps.apple.com/app/id6833678431","https://play.google.com/store/apps/details?id=com.conelabs.adhanapp"],"image":"https://adhanapp.conelabs.org/img/og-image.jpg","screenshot":["https://adhanapp.conelabs.org/img/today-dhuhr.webp","https://adhanapp.conelabs.org/img/widgets.webp","https://adhanapp.conelabs.org/img/week.webp"],"publisher":{"@id":"https://adhanapp.conelabs.org/#org"}},
+{"@type":"Organization","@id":"https://adhanapp.conelabs.org/#org","sameAs":["https://apps.apple.com/app/id6833678431","https://play.google.com/store/apps/details?id=com.conelabs.adhanapp"],"name":"Conelab IT Consultants Inc.","url":"https://adhanapp.conelabs.org/"},
 {"@type":"WebSite","@id":"https://adhanapp.conelabs.org/#site","url":"https://adhanapp.conelabs.org/","name":"Adhan Times","publisher":{"@id":"https://adhanapp.conelabs.org/#org"}},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"How does Adhan Times calculate prayer times?","acceptedAnswer":{"@type":"Answer","text":"Prayer times are calculated on your device from your location using standard astronomical formulas. You can choose the calculation method, including University of Islamic Sciences Karachi, ISNA, Muslim World League, Egypt, Makkah and Tehran, and pick Standard or Hanafi for Asr."}},
 {"@type":"Question","name":"Do prayer times update when I travel?","acceptedAnswer":{"@type":"Answer","text":"Yes. When you open the app somewhere new, Adhan Times notices the change and offers to update your prayer times and reminders with one tap."}},
 {"@type":"Question","name":"Will I hear the adhan at each prayer time?","acceptedAnswer":{"@type":"Answer","text":"Adhan Times schedules an adhan notification for each prayer. You can turn reminders on or off for each prayer and add a heads-up reminder before it."}},
-{"@type":"Question","name":"Which devices does Adhan Times support?","acceptedAnswer":{"@type":"Answer","text":"Adhan Times runs on iPhone, iPhone Duo and iPad, with an Apple Watch app and complications, plus widgets for the Home Screen and Lock Screen."}},
+{"@type":"Question","name":"Which devices does Adhan Times support?","acceptedAnswer":{"@type":"Answer","text":"Adhan Times is on the App Store for iPhone, iPhone Duo and iPad, with an Apple Watch app and complications, and on Google Play for Android phones. Both have Home Screen widgets."}},
 {"@type":"Question","name":"Do I need an account?","acceptedAnswer":{"@type":"Answer","text":"No. Adhan Times works without an account or sign-in."}}
 ]}
 ]}
@@ -91,6 +91,7 @@ p{margin:0}
 .store svg{flex-shrink:0}
 .store small{display:block;font-size:11px;letter-spacing:.02em;opacity:.85;line-height:1.1}
 .store strong{display:block;font:600 20px/1.15 var(--font-display);letter-spacing:-.01em}
+.stores{display:flex;flex-wrap:wrap;gap:12px}
 .ghost{min-height:56px;display:inline-flex;align-items:center;padding:0 20px;border-radius:14px;color:#fff;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.4)}
 .ghost:hover{background:rgba(255,255,255,.1)}
 .hero-shot{justify-self:center;width:min(360px,100%);margin-bottom:-60px;filter:drop-shadow(0 40px 60px rgba(0,0,0,.4))}
@@ -134,7 +135,7 @@ section{padding-block:96px}
 .devices .ipad img{width:100%;filter:drop-shadow(0 30px 50px rgba(14,20,48,.22))}
 .watches{display:flex;gap:20px;justify-content:center}
 .watches img{width:min(170px,45%)}
-.device-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px}
+.device-notes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:56px}
 .device-notes div{display:flex;flex-direction:column;gap:8px;border-top:2px solid var(--line);padding-top:18px}
 .device-notes p{color:var(--muted);font-size:16px}
 
@@ -169,8 +170,9 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
   .row,.devices{grid-template-columns:1fr;gap:36px}
   .row.flip .shot{order:0}
   .triptych{grid-template-columns:1fr;gap:40px}
-  .device-notes{grid-template-columns:1fr}
+  .device-notes{grid-template-columns:repeat(2,minmax(0,1fr))}
   section{padding-block:72px}
+  .stores .store{flex:1 1 200px}
   .row + .row{margin-top:72px}
 }
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .sky{transition:none} }
@@ -191,7 +193,7 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
       <ul>
         <li><a href="#features">Features</a></li>
         <li><a href="#widgets">Widgets</a></li>
-        <li><a href="#devices">Apple Watch &amp; iPad</a></li>
+        <li><a href="#devices">Devices</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
@@ -201,13 +203,19 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
         <h1>Never miss a prayer.</h1>
         <p class="lede">Adhan Times shows exactly how long until the next prayer, with a calm design whose sky follows your day from Fajr to Isha.</p>
         <div class="cta-row">
+          <div class="stores">
           <a class="store" href="https://apps.apple.com/app/id6833678431" rel="noopener">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
             <span><small>Download on the</small><strong>App Store</strong></span>
           </a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=com.conelabs.adhanapp" rel="noopener">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg>
+            <span><small>Get it on</small><strong>Google Play</strong></span>
+          </a>
+          </div>
           <a class="ghost" href="#features">See how it works</a>
         </div>
-        <p class="platforms">For iPhone, iPhone Duo, iPad and Apple Watch</p>
+        <p class="platforms">For iPhone, iPad and Apple Watch on the App Store, and Android phones on Google Play</p>
       </div>
       <img class="hero-shot" src="img/today-dhuhr.webp" width="780" height="1688" alt="Adhan Times Today screen counting down to Asr, with all six prayer times for the day" fetchpriority="high">
     </div>
@@ -300,7 +308,7 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
         <div class="copy">
           <span class="eyebrow">Widgets</span>
           <h2 id="widgets-title">The countdown, right on your Home Screen</h2>
-          <p>Small, medium and large widgets show the time left until the next prayer over the sun’s path across the day. The larger sizes list all six prayers. Lock Screen widgets and a Live Activity keep the next adhan in view without unlocking your phone.</p>
+          <p>Small, medium and large widgets show the time left until the next prayer over the sun’s path across the day. The larger sizes list all six prayers. On iPhone, Lock Screen widgets and a Live Activity keep the next adhan in view without unlocking your phone. On Android, the Home Screen widget counts down too.</p>
         </div>
         <div class="shot"><img src="img/widgets.webp" width="780" height="1688" alt="Adhan Times widgets in small, medium and large sizes on an iPhone Home Screen" loading="lazy"></div>
       </div>
@@ -311,7 +319,7 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
     <div class="wrap">
       <div class="head">
         <span class="eyebrow">Every screen</span>
-        <h2 id="devices-title">On your wrist, your iPad and your iPhone Duo</h2>
+        <h2 id="devices-title">On your wrist, your iPad and your Android phone</h2>
       </div>
       <div class="devices">
         <div class="ipad"><img src="img/ipad.webp" width="1791" height="1251" alt="Adhan Times on iPad with a large countdown inside the sun's path and the day's prayers below" loading="lazy"></div>
@@ -324,6 +332,7 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
         <div><h3>Apple Watch</h3><p>A countdown, the full list of times and complications for your watch face.</p></div>
         <div><h3>iPad</h3><p>A large countdown at the centre of the screen, with the day’s prayers below.</p></div>
         <div><h3>iPhone Duo</h3><p>Fits the cover screen when folded and the full screen when open.</p></div>
+        <div><h3>Android</h3><p>The same prayer times, adhan reminders and Qibla finder, with a Home Screen widget. On Google Play.</p></div>
       </div>
     </div>
   </section>
@@ -338,7 +347,7 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
         <details open><summary>How does Adhan Times calculate prayer times?</summary><p>Prayer times are calculated on your device from your location using standard astronomical formulas. You can choose the calculation method, including University of Islamic Sciences Karachi, ISNA, Muslim World League, Egypt, Makkah and Tehran, and pick Standard or Hanafi for Asr.</p></details>
         <details><summary>Do prayer times update when I travel?</summary><p>Yes. When you open the app somewhere new, Adhan Times notices the change and offers to update your prayer times and reminders with one tap.</p></details>
         <details><summary>Will I hear the adhan at each prayer time?</summary><p>Adhan Times schedules an adhan notification for each prayer. You can turn reminders on or off for each prayer and add a heads-up reminder before it.</p></details>
-        <details><summary>Which devices does Adhan Times support?</summary><p>Adhan Times runs on iPhone, iPhone Duo and iPad, with an Apple Watch app and complications, plus widgets for the Home Screen and Lock Screen.</p></details>
+        <details><summary>Which devices does Adhan Times support?</summary><p>Adhan Times is on the <a href="https://apps.apple.com/app/id6833678431" rel="noopener">App Store</a> for iPhone, iPhone Duo and iPad, with an Apple Watch app and complications, and on <a href="https://play.google.com/store/apps/details?id=com.conelabs.adhanapp" rel="noopener">Google Play</a> for Android phones. Both have Home Screen widgets; iPhone also has Lock Screen widgets and a Live Activity.</p></details>
         <details><summary>Do I need an account?</summary><p>No. Adhan Times works without an account or sign-in.</p></details>
       </div>
     </div>
@@ -349,12 +358,18 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
       <div class="card">
         <div>
           <h2 id="final-title">Know the time to the next prayer, always.</h2>
-          <p>Adhan Times for iPhone, iPad and Apple Watch.</p>
+          <p>Adhan Times for iPhone, iPad, Apple Watch and Android.</p>
         </div>
+        <div class="stores">
         <a class="store" href="https://apps.apple.com/app/id6833678431" rel="noopener">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
           <span><small>Download on the</small><strong>App Store</strong></span>
         </a>
+        <a class="store" href="https://play.google.com/store/apps/details?id=com.conelabs.adhanapp" rel="noopener">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg>
+          <span><small>Get it on</small><strong>Google Play</strong></span>
+        </a>
+        </div>
       </div>
     </div>
   </section>
@@ -365,6 +380,7 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
     <span>© 2026 Conelab IT Consultants Inc.</span>
     <nav aria-label="Footer">
       <a href="https://apps.apple.com/app/id6833678431" rel="noopener">App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=com.conelabs.adhanapp" rel="noopener">Google Play</a>
       <a href="https://github.com/talal7860/prayer-app/issues" rel="noopener">Support</a>
       <a href="#faq">FAQ</a>
       <a href="/privacy-policy">Privacy Policy</a>
